@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 21, 2017 4:11:23 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.jsapl.persistence.Site" table="SITE">
+    
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="siteCode" type="java.lang.String">
+            <column name="SITECODE" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        
+<!--         <set name="contacts" table="SITE" inverse="false" lazy="true" access="field"> -->
+<!--             <key> -->
+<!--                 <column name="ID" /> -->
+<!--             </key> -->
+<!--             <element type="java.lang.String"> -->
+<!--                 <column name="CONTACTS" /> -->
+<!--             </element> -->
+<!--         </set> -->
+
+    </class>
+</hibernate-mapping>

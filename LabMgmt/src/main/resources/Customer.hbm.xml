@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 21, 2017 4:43:36 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.jsapl.persistence.Customer" table="CUSTOMER">
+        <id name="custId" type="long">
+            <column name="CUSTID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="PHONE" />
+        </property>
+         <property name="pan" type="java.lang.String">
+            <column name="PAN" />
+        </property>
+        
+      <many-to-one name="customerType" not-null="true"></many-to-one>
+       
+       <set name="contacts" table="CUSTOMER_CONTACT" cascade="save-update">
+       		<key column="custId">
+       		</key>
+       		<composite-element class="com.jsapl.persistence.CustomerContact">
+       			<property name="name"></property>
+       			<property name="email"></property>
+       			<property name="phone"></property>
+       		</composite-element>
+       </set>
+    </class>
+</hibernate-mapping>
