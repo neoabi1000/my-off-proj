@@ -6,6 +6,7 @@ public class CustomerType {
 	private int type;
 	private String name;
 	private int creditLimit;
+	private int check;
 	
 	public CustomerType(){};
 	public CustomerType(String name, int creditLimit)

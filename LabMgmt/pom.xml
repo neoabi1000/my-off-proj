@@ -31,7 +31,26 @@
 			<version>4.3.7.Final</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-moxy</artifactId>
+			<version>2.22.2</version>
+		</dependency>
+
 	</dependencies>
+	
+	
+	
+	<properties>
+		<jersey.version>2.22.2</jersey.version>
+	</properties>
+	
+	
 
 	<build>
 		<finalName>LabMgmt</finalName>

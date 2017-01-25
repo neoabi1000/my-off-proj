@@ -1,22 +1,19 @@
-package com.jsapl.persistence;
-
-import java.util.HashSet;
-import java.util.Set;
+package com.jsapl.rest;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-public class Customer {
+@XmlRootElement
+public class CustomerObj {
 	
 	private long custId;
 	private String name;
 	private String phone;
 	private String pan;
-	private String sample;
+
 	
-	private Set<CustomerContact> contacts = new HashSet<>();
-	
-	private CustomerType customerType;
+
+
 	
 	
 	
@@ -26,12 +23,7 @@ public class Customer {
 	public void setPan(String pan) {
 		this.pan = pan;
 	}
-	public CustomerType getCustomerType() {
-		return customerType;
-	}
-	public void setCustomerType(CustomerType customerType) {
-		this.customerType = customerType;
-	}
+
 	public long getCustId() {
 		return custId;
 	}
@@ -40,13 +32,6 @@ public class Customer {
 	}
 	public String getName() {
 		return name;
-	}
-	
-	public void setContacts(Set<CustomerContact> contacts) {
-		this.contacts = contacts;
-	}
-	public Set<CustomerContact> getContacts() {
-		return contacts;
 	}
 	
 	public void setName(String name) {
