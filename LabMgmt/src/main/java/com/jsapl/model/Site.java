@@ -1,4 +1,4 @@
-package com.jsapl.persistence;
+package com.jsapl.model;
 
 import java.util.HashSet;
 import java.util.Set;

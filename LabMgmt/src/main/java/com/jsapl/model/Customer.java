@@ -1,9 +1,7 @@
-package com.jsapl.persistence;
+package com.jsapl.model;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.xml.bind.annotation.XmlRootElement;
 
 
 public class Customer {
@@ -12,13 +10,10 @@ public class Customer {
 	private String name;
 	private String phone;
 	private String pan;
-	private String sample;
 	
 	private Set<CustomerContact> contacts = new HashSet<>();
 	
 	private CustomerType customerType;
-	
-	
 	
 	public String getPan() {
 		return pan;

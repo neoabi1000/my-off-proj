@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Jan 21, 2017 5:54:47 PM by Hibernate Tools 3.4.0.CR1 -->
-<hibernate-mapping>
-    <class name="com.jsapl.persistence.CustomerType" table="CUSTOMERTYPE">
-        <id name="type" type="int">
-            <column name="TYPE" />
-            <generator class="increment" />
-        </id>
-        <property name="name" type="java.lang.String">
-            <column name="NAME" />
-        </property>
-        <property name="creditLimit" type="int">
-            <column name="CREDITLIMIT" />
-        </property>
-    </class>
+
+<hibernate-mapping package="com.jsapl.model">
+	<class name="CustomerType" table="CUSTOMER_TYPE">
+		<id name="type" type="int">
+			<column name="TYPE" />
+			<generator class="increment" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<property name="creditLimit" type="int">
+			<column name="CREDITLIMIT" />
+		</property>
+	</class>
 </hibernate-mapping>

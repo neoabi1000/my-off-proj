@@ -2,11 +2,11 @@ package com.jsapl.app;
 
 import org.hibernate.Session;
 
-import com.jsapl.persistence.CUID;
-import com.jsapl.persistence.Customer;
-import com.jsapl.persistence.CustomerContact;
-import com.jsapl.persistence.CustomerType;
+import com.jsapl.model.Customer;
+import com.jsapl.model.CustomerContact;
+import com.jsapl.model.CustomerType;
 import com.jsapl.persistence.HibernateUtil;
+import com.jsapl.util.CUID;
 
 public class CreateCustomer {
 	public static void main(String[] args) {

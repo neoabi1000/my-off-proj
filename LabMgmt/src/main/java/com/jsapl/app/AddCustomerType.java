@@ -2,8 +2,8 @@ package com.jsapl.app;
 
 import org.hibernate.Session;
 
-import com.jsapl.persistence.Customer;
-import com.jsapl.persistence.CustomerType;
+import com.jsapl.model.Customer;
+import com.jsapl.model.CustomerType;
 import com.jsapl.persistence.HibernateUtil;
 
 public class AddCustomerType {

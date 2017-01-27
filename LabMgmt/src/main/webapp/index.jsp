@@ -1,4 +1,4 @@
-<%@page import="com.jsapl.persistence.Customer"%>
+<%@page import="com.jsapl.model.Customer"%>
 <%@page import="com.jsapl.persistence.HibernateUtil"%>
 <%@page import="org.hibernate.Session"%>
 <html>

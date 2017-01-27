@@ -1,4 +1,4 @@
-package com.jsapl.persistence;
+package com.jsapl.model;
 
 public class CustomerContact {
 	
@@ -8,8 +8,8 @@ public class CustomerContact {
 	
 	public CustomerContact(){}
 	
-	public CustomerContact( String name, String email, String phone){
-		this.name=name;
+	public CustomerContact(String name, String email, String phone){
+		this.name = name;
 		this.phone = phone;
 		this.email=email;	
 	}

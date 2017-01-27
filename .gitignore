@@ -2,6 +2,7 @@
 /build/
 /bin/
 target/
+servers/
 RemoteSystemsTempFiles/
  
 # OS Files #
