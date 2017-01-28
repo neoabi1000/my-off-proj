@@ -17,6 +17,8 @@
 		
 		<mapping resource="Customer.hbm.xml" />
 		<mapping resource="CustomerType.hbm.xml" />
+		<mapping resource="TestCategory.hbm.xml" />
+		<mapping resource="TestType.hbm.xml" />
 		<mapping resource="Site.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

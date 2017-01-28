@@ -15,6 +15,13 @@ public class Customer {
 	
 	private CustomerType customerType;
 	
+	
+	
+	
+	
+	
+	
+	
 	public String getPan() {
 		return pan;
 	}
