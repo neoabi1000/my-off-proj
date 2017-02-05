@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.jsapl.model">
+
+	<class name="Sample" table="SAMPLE">
+		<id name="sampleid" type="long">
+			<column name="SAMPLEID" />
+			<generator class="assigned" />
+		</id>
+
+		<many-to-one name="customer" class="com.jsapl.model.Customer">
+			<column name="CUSTID" not-null="true" />
+		</many-to-one>
+
+		<property name="form">
+			<column name="FORM" />
+			<type name="org.hibernate.type.EnumType">
+				<param name="type">12</param>
+				<param name="enumClass">com.jsapl.model.Sample$Form</param>
+				<param name="useNamed">true</param>
+			</type>
+		</property>
+
+		<property name="receivedDate" type="java.sql.Date">
+			<column name="RECEIVEDDATE" />
+		</property>
+
+		<property name="status">
+			<column name="STATUS" />
+			<type name="org.hibernate.type.EnumType">
+				<param name="type">12</param>
+				<param name="enumClass">com.jsapl.model.Sample$Status</param>
+				<param name="useNamed">true</param>
+			</type>
+		</property>
+
+		<property name="size" type="int">
+			<column name="SIZE" />
+		</property>
+
+		<property name="stamping" type="java.lang.String">
+			<column name="STAMPING" />
+		</property>
+
+		<property name="isToBeReurned" type="boolean" access="field">
+			<column name="ISTOBEREURNED" />
+		</property>
+		
+		<set name="tests" inverse="true" table="TEST" lazy="true" access="field">
+			<key column="SAMPLEID"></key>
+			<one-to-many class="com.jsapl.model.Test" />
+		</set>
+	</class>
+
+</hibernate-mapping>

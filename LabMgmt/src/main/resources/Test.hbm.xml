@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.jsapl.model.Test" table="TEST">
+    
+    	<composite-id name="testId">
+    		<key-property name="workOrderId" column="WORKORDERID"/>
+    		<key-property name="sampleId" column="SAMPLEID"/>
+    		<key-property name="testTypeId" column="TESTTYPEID"/>
+    	</composite-id>
+       
+        <property name="requiredSpecification" type="java.lang.String">
+            <column name="REQUIREDSPECIFICATION" />
+        </property>
+        <property name="testStatus">
+            <column name="TESTSTATUS" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="type">12</param>
+                <param name="enumClass">com.jsapl.model.Test$Status</param>
+            </type>
+        </property>
+        <property name="created" type="java.sql.Date">
+            <column name="CREATED" />
+        </property>
+        <property name="assignedToWrkOderOn" type="java.sql.Date">
+            <column name="ASSIGNEDTOWRKODERON" />
+        </property>
+        <property name="tester" type="java.lang.String">
+            <column name="TESTER" />
+        </property>
+        <property name="testResults" type="java.lang.String">
+            <column name="TESTRESULTS" />
+        </property>
+    </class>
+</hibernate-mapping>

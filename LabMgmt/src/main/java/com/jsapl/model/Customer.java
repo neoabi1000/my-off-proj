@@ -3,6 +3,7 @@ package com.jsapl.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Customer {
 	
@@ -11,17 +12,24 @@ public class Customer {
 	private String phone;
 	private String pan;
 	
-	private Set<CustomerContact> contacts = new HashSet<>();
-	
+	@JsonIgnore
+	private Set<Sample> activeSamples = new HashSet<>();
+
 	private CustomerType customerType;
 	
+	@JsonIgnore
+	private Set<CustomerContact> contacts = new HashSet<>();
 	
 	
 	
 	
-	
-	
-	
+
+	public Set<Sample> getActiveSamples() {
+		return activeSamples;
+	}
+	public void setActiveSamples(Set<Sample> activeSamples) {
+		this.activeSamples = activeSamples;
+	}
 	public String getPan() {
 		return pan;
 	}

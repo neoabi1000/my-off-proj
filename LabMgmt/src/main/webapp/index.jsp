@@ -13,7 +13,7 @@
 		//Sample Transaction		
 		session1.beginTransaction();
 		
-		Customer cust1 = (Customer)session1.load(Customer.class, new Long(7725965922401255425L));
+		Customer cust1 = (Customer)session1.load(Customer.class, new Long(7727621757672095745L));
 		
 		out.println("Customer name: " + cust1.getName());
 

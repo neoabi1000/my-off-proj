@@ -1,19 +1,36 @@
 package com.jsapl.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class TestType {
 
-	private long id;
+	private long testTypeId;
 	private String name;
 	private String description;
+	private double price;
 	private TestCategory category;
 	
 	
-	public long getId() {
-		return id;
+	private Set<Test> tests = new HashSet<>();
+	
+	
+	
+	
+	
+	public long getTestTypeId() {
+		return testTypeId;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setTestTypeId(long testTypeId) {
+		this.testTypeId = testTypeId;
 	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	public String getName() {
 		return name;
 	}

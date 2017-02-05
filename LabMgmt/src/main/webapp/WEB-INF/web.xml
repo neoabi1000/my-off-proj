@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>CreateTestData</servlet-name>
+  	<display-name>CreateTestData</display-name>
+  	<description></description>
+  	<servlet-class>com.jsapl.servlets.CreateTestData</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CreateTestData</servlet-name>
+  	<url-pattern>/CreateTestData</url-pattern>
+  </servlet-mapping>
 </web-app>

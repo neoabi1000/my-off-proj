@@ -3,19 +3,28 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.jsapl.model.TestType" table="TESTTYPE">
-        <id name="id" type="long">
-            <column name="ID" />
-            <generator class="assigned" />
-        </id>
-        <property name="name" type="java.lang.String">
-            <column name="NAME" />
-        </property>
-        <property name="description" type="java.lang.String">
-            <column name="DESCRIPTION" />
-        </property>
-        <many-to-one name="category" class="com.jsapl.model.TestCategory" fetch="join" not-null="true">
-            <column name="CATEGORY" />
-        </many-to-one>
-    </class>
+	<class name="com.jsapl.model.TestType" table="TESTTYPE">
+		<id name="testTypeId" type="long">
+			<column name="ID" />
+			<generator class="native" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="DESCRIPTION" />
+		</property>
+		<property name="price" type="double">
+			<column name="PRICE" />
+		</property>
+		<many-to-one name="category" class="com.jsapl.model.TestCategory"
+			fetch="join" not-null="true">
+			<column name="CATEGORY" />
+		</many-to-one>
+		
+		<set name="tests" inverse="true" table="TEST" lazy="false" access="field">
+			<key column="TESTTYPEID"></key>
+			<one-to-many class="com.jsapl.model.Test" />
+		</set>
+	</class>
 </hibernate-mapping>

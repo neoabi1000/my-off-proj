@@ -3,6 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.jsapl.model">
+
 	<class name="Customer" table="CUSTOMER">
 		<id name="custId" type="long">
 			<column name="CUSTID" />
@@ -18,7 +19,16 @@
 			<column name="PAN" />
 		</property>
 
-		<many-to-one name="customerType" not-null="true"></many-to-one>
+		<many-to-one name="customerType" not-null="true" lazy="false"></many-to-one>
+
+		<set name="activeSamples" inverse="false" fetch="select" table="SAMPLE"
+			lazy="true">
+			<key column="CUSTID"></key>
+			<one-to-many class="Sample" />
+		</set>
+
+
+
 
 		<set name="contacts" table="CUSTOMER_CONTACT" cascade="save-update">
 			<key column="custId"></key>
@@ -29,4 +39,5 @@
 			</composite-element>
 		</set>
 	</class>
+	
 </hibernate-mapping>

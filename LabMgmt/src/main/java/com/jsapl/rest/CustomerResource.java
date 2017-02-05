@@ -45,6 +45,7 @@ public class CustomerResource {
 		if(pageSize != null){
 			query = query.setMaxResults(Integer.valueOf(pageSize));
 		}
+	
 								
 								
 		List<Customer> list = query.list();
@@ -98,7 +99,7 @@ public class CustomerResource {
 								.getAppSessionFactory()
 								.openSession();
 
-		Customer customer = (Customer)session.load(Customer.class, custid);
+		Customer customer = (Customer)session.get(Customer.class, custid);
 
 		session.close();
 
