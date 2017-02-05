@@ -1,39 +1,44 @@
-package com.jsapl.model;
+package com.jsapl.rest.dto;
 
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class WorkOrder {
-	
-	public enum Status{New, InProgress, Stalled, Completed}
+import com.jsapl.model.WorkOrder;
+
+public class WorkOrderDTO {
 	
 	private long id;
-	private Customer customer;
+	private long custId;
 	private String description;
 	private String clientInfo;
 	private Date created;
 	private Date updated;
-	private Status status;
+	private String status;
 	private Date dateCommited;
 	private double totalCost;
 	private double advancePaid;
 	
+		
 	
-	private Set<Test> tests = new HashSet<>();
-	
+	public WorkOrderDTO(WorkOrder workOrder) {
+		this.id = workOrder.getId();
+		this.custId = workOrder.getCustomer().getCustId();
+		this.description=workOrder.getDescription();
+		this.clientInfo=workOrder.getClientInfo();
+		this.created=workOrder.getCreated();
+		this.updated=workOrder.getUpdated();
+		this.status= workOrder.getStatus().name();
+		this.dateCommited=workOrder.getDateCommited();
+		this.totalCost = workOrder.getTotalCost();
+		this.advancePaid = workOrder.getAdvancePaid();
+	}
 	
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
 	}
 	public String getDescription() {
 		return description;
@@ -59,10 +64,10 @@ public class WorkOrder {
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
-	public Status getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(Status status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public Date getDateCommited() {
@@ -83,10 +88,11 @@ public class WorkOrder {
 	public void setAdvancePaid(double advancePaid) {
 		this.advancePaid = advancePaid;
 	}
-	public Set<Test> getTests() {
-		return tests;
+	public long getCustId() {
+		return custId;
 	}
-	public void setTests(Set<Test> tests) {
-		this.tests = tests;
+	public void setCustId(long custId) {
+		this.custId = custId;
 	}
+
 }

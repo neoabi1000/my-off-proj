@@ -44,8 +44,8 @@
 			<column name="STAMPING" />
 		</property>
 
-		<property name="isToBeReurned" type="boolean" access="field">
-			<column name="ISTOBEREURNED" />
+		<property name="isToBeReturned" type="yes_no" access="field">
+			<column name="ISTOBERETURNED" />
 		</property>
 		
 		<set name="tests" inverse="true" table="TEST" lazy="true" access="field">

@@ -1,26 +1,38 @@
-package com.jsapl.model;
+package com.jsapl.rest.dto;
 
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-public class Sample {
+import com.jsapl.model.Sample;
 
-	public enum Form {Wires, Spring, Powder, Plate, Pipe, Flat, Rod, Tube, Cast}
-	public enum Status {Received, UnderTest, Used}
-	
+public class SampleDTO {
+
 	private long sampleid;
-	private Customer customer;
-	private Form form;
+	private long custId;
+	private Sample.Form form;
 	private Date receivedDate;
-	private Status status;
+	private Sample.Status status;
 	private int size;
 	private String stamping;
 	private boolean isToBeReturned;
 	
-	private Set<Test> tests = new HashSet<>();
+
+	public SampleDTO(Sample sample){
+		this.sampleid = sample.getSampleid();
+		this.custId = sample.getCustomer().getCustId();
+		this.form = sample.getForm();
+		this.receivedDate = sample.getReceivedDate();
+		this.status = sample.getStatus();
+		this.size = sample.getSize();
+		this.stamping=sample.getStamping();
+		this.isToBeReturned = sample.isToBeReturned();
+	}
 	
-	
+	public long getCustId() {
+		return custId;
+	}
+	public void setCustId(long custId) {
+		this.custId = custId;
+	}
 	public boolean isToBeReturned() {
 		return isToBeReturned;
 	}
@@ -28,16 +40,10 @@ public class Sample {
 		this.isToBeReturned = isToBeReturned;
 	}
 	
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-	public Status getStatus() {
+	public Sample.Status getStatus() {
 		return status;
 	}
-	public void setStatus(Status status) {
+	public void setStatus(Sample.Status status) {
 		this.status = status;
 	}
 	public long getSampleid() {
@@ -64,10 +70,10 @@ public class Sample {
 	public void setReceivedDate(Date receivedDate) {
 		this.receivedDate = receivedDate;
 	}
-	public Form getForm() {
+	public Sample.Form getForm() {
 		return form;
 	}
-	public void setForm(Form form) {
+	public void setForm(Sample.Form form) {
 		this.form = form;
 	}
 }

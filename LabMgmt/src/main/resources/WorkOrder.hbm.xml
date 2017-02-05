@@ -3,38 +3,45 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.jsapl.model.WorkOrder" table="WORKORDER">
-        <id name="id" type="long">
-            <column name="ID" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="customer" class="com.jsapl.model.Customer" fetch="join">
-            <column name="CUSTOMER" />
-        </many-to-one>
-        <property name="description" type="java.lang.String">
-            <column name="DESCRIPTION" />
-        </property>
-        <property name="clientInfo" type="java.lang.String">
-            <column name="CLIENTINFO" />
-        </property>
-        <property name="created" type="java.sql.Date">
-            <column name="CREATED" />
-        </property>
-        <property name="updated" type="java.sql.Date">
-            <column name="UPDATED" />
-        </property>
-        <property name="status">
-            <column name="STATUS" />
-            <type name="org.hibernate.type.EnumType">
-                <param name="type">12</param>
-                <param name="enumClass">com.jsapl.model.WorkOrder$Status</param>
-            </type>
-        </property>
-        
-        <set name="tests" inverse="true" table="TEST" lazy="false">
+	<class name="com.jsapl.model.WorkOrder" table="WORKORDER">
+		<id name="id" type="long">
+			<column name="ID" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="customer" class="com.jsapl.model.Customer"
+			fetch="join">
+			<column name="CUSTOMER" />
+		</many-to-one>
+		<property name="description" type="java.lang.String">
+			<column name="DESCRIPTION" />
+		</property>
+		<property name="clientInfo" type="java.lang.String">
+			<column name="CLIENTINFO" />
+		</property>
+		<property name="created" type="java.sql.Date">
+			<column name="CREATED" />
+		</property>
+		<property name="updated" type="java.sql.Date">
+			<column name="UPDATED" />
+		</property>
+		<property name="status">
+			<column name="STATUS" />
+			<type name="org.hibernate.type.EnumType">
+				<param name="type">12</param>
+				<param name="enumClass">com.jsapl.model.WorkOrder$Status</param>
+			</type>
+		</property>
+		<property name="dateCommited" type="java.sql.Date">
+			<column name="DATECOMMITED" />
+		</property>
+		<property name="advancePaid" type="double">
+			<column name="ADVANCEPAID" />
+		</property>
+
+		<set name="tests" inverse="true" table="TEST" lazy="false">
 			<key column="WORKORDERID"></key>
 			<one-to-many class="com.jsapl.model.Test" />
 		</set>
-		
-    </class>
+
+	</class>
 </hibernate-mapping>

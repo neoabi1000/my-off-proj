@@ -44,17 +44,12 @@ public class CustomerSearchResource {
 		
 		//404 Not Found
 		if(list==null || list.size()<=0){
-			return Response
-					.status(Status.NOT_FOUND)
-					.build();
+			return Response.status(Status.NOT_FOUND).build();
 		}
 
 		
 		//200 OK
-		return Response
-				.ok()
-				.entity(new GenericEntity<List<Customer>>(list){})
-				.build();
+		return Response.ok().entity(new GenericEntity<List<Customer>>(list){}).build();
 	}
 }
 
