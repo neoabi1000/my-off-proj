@@ -15,6 +15,9 @@ public class SampleDTO {
 	private String stamping;
 	private boolean isToBeReturned;
 	
+	public SampleDTO(){
+		
+	}
 
 	public SampleDTO(Sample sample){
 		this.sampleid = sample.getSampleid();
@@ -26,6 +29,7 @@ public class SampleDTO {
 		this.stamping=sample.getStamping();
 		this.isToBeReturned = sample.isToBeReturned();
 	}
+	
 	
 	public long getCustId() {
 		return custId;
@@ -76,4 +80,5 @@ public class SampleDTO {
 	public void setForm(Sample.Form form) {
 		this.form = form;
 	}
+	
 }

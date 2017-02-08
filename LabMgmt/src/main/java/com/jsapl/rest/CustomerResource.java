@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -19,6 +20,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -115,6 +117,32 @@ public class CustomerResource {
 	}
 
 
+	@DELETE @Path("{custid:\\d+}")
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public Response deleteCustomerById(@PathParam("custid") Long custid){
+
+		Session session = HibernateUtil
+				.getAppSessionFactory()
+				.openSession();
+		try{
+			session.beginTransaction();
+
+			Customer customer = (Customer)session.get(Customer.class, custid);
+			session.delete(customer);
+			session.getTransaction().commit();
+			session.close();
+
+		}catch(ObjectNotFoundException e){
+			return Response.status(Response.Status.NOT_FOUND).entity("Customer not found").build();
+		}
+		
+
+		return Response.ok().build();
+
+	}
+
+
+
 
 	@GET @Path("{custid:\\d+}/samples")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -128,7 +156,7 @@ public class CustomerResource {
 		Session session = HibernateUtil.getAppSessionFactory().openSession();
 
 		Customer customer = (Customer)session.get(Customer.class, custid);
-		
+
 		if(customer!=null){
 			System.out.println(customer.getCustId());
 			Query query = session.createQuery("select s from Sample s where s.customer.custId=:pcustid");
@@ -151,7 +179,7 @@ public class CustomerResource {
 			return Response.status(Response.Status.NOT_FOUND).entity("There are no samples for this customer").build();
 
 		retList = new ArrayList<>();
-		
+
 		for(Sample sample: list){
 			retList.add(new SampleDTO(sample));
 		}
@@ -160,7 +188,7 @@ public class CustomerResource {
 
 	}
 
-	
+
 	@GET @Path("{custid:\\d+}/workorders")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response getWorkOrdersByCustId(
@@ -173,7 +201,7 @@ public class CustomerResource {
 		Session session = HibernateUtil.getAppSessionFactory().openSession();
 
 		Customer customer = (Customer)session.get(Customer.class, custid);
-		
+
 		if(customer!=null){
 			System.out.println(customer.getCustId());
 			Query query = session.createQuery("select wo from WorkOrder wo where wo.customer.custId=:pcustid");
@@ -196,7 +224,7 @@ public class CustomerResource {
 			return Response.status(Response.Status.NOT_FOUND).entity("There are no work orders for this customer").build();
 
 		retList = new ArrayList<>();
-		
+
 		for(WorkOrder workOrder: list){
 			retList.add(new WorkOrderDTO(workOrder));
 		}
