@@ -9,8 +9,8 @@ public class Sample {
 	public enum Form {Wires, Spring, Powder, Plate, Pipe, Flat, Rod, Tube, Cast}
 	public enum Status {Received, UnderTest, Used}
 	
-	private long sampleid;
-	private Customer customer;
+	private long sampleId;
+	private String sampleName;
 	private Form form;
 	private Date receivedDate;
 	private Status status;
@@ -18,7 +18,36 @@ public class Sample {
 	private String stamping;
 	private boolean isToBeReturned;
 	
+	private Customer customer;
+	
 	private Set<Test> tests = new HashSet<>();
+	
+	public Sample(){}
+	public Sample(Customer customer){this.customer = customer;}
+	
+	
+	@Override
+	public int hashCode() {
+		return sampleName.hashCode()+29*size +29*form.hashCode()+29*customer.getName().hashCode();
+		
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) return false;
+		if(this == obj) return true;
+		if(!(obj instanceof Sample)) return false;
+
+		Sample in = (Sample)obj;
+		if(this.sampleName.equals(in.sampleName) && 
+				(this.size == in.size) && 
+				(this.form.equals(in.form)) && 
+				(this.getCustomer().getName().equals(in.getCustomer().getName()))) 
+			return true;
+		
+		return false;
+	}
+	
 	
 	
 	public boolean isToBeReturned() {
@@ -28,6 +57,12 @@ public class Sample {
 		this.isToBeReturned = isToBeReturned;
 	}
 	
+	public String getSampleName() {
+		return sampleName;
+	}
+	public void setSampleName(String sampleName) {
+		this.sampleName = sampleName;
+	}
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -40,11 +75,11 @@ public class Sample {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	public long getSampleid() {
-		return sampleid;
+	public long getSampleId() {
+		return sampleId;
 	}
-	public void setSampleid(long sampleid) {
-		this.sampleid = sampleid;
+	public void setSampleId(long sampleId) {
+		this.sampleId = sampleId;
 	}
 	public int getSize() {
 		return size;

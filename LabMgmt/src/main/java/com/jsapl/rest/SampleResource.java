@@ -37,7 +37,7 @@ public class SampleResource {
 		}
 
 		Sample sample = new Sample();
-		sample.setSampleid(CUID.getInstance().nextId());
+		sample.setSampleId(CUID.getInstance().nextId());
 		sample.setCustomer(customer);
 		sample.setForm(sampleDTO.getForm());
 		sample.setReceivedDate(sampleDTO.getReceivedDate());
@@ -53,7 +53,7 @@ public class SampleResource {
 		session.getTransaction().commit();
 		session.close();
 
-		return Response.created(new URI(uriInfo.getRequestUri()+"/"+sample.getSampleid())).build();
+		return Response.created(new URI(uriInfo.getRequestUri()+"/"+sample.getSampleId())).build();
 	}
 
 }

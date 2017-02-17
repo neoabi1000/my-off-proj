@@ -19,7 +19,9 @@ public class WorkOrderDTO {
 	private double totalCost;
 	private double advancePaid;
 	
+	public WorkOrderDTO(){
 		
+	}
 	
 	public WorkOrderDTO(WorkOrder workOrder) {
 		this.id = workOrder.getId();

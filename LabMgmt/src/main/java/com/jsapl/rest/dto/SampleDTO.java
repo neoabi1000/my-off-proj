@@ -6,7 +6,8 @@ import com.jsapl.model.Sample;
 
 public class SampleDTO {
 
-	private long sampleid;
+	private long sampleId;
+	private String sampleName;
 	private long custId;
 	private Sample.Form form;
 	private Date receivedDate;
@@ -20,7 +21,7 @@ public class SampleDTO {
 	}
 
 	public SampleDTO(Sample sample){
-		this.sampleid = sample.getSampleid();
+		this.sampleId = sample.getSampleId();
 		this.custId = sample.getCustomer().getCustId();
 		this.form = sample.getForm();
 		this.receivedDate = sample.getReceivedDate();
@@ -50,11 +51,11 @@ public class SampleDTO {
 	public void setStatus(Sample.Status status) {
 		this.status = status;
 	}
-	public long getSampleid() {
-		return sampleid;
+	public long getSampleId() {
+		return sampleId;
 	}
-	public void setSampleid(long sampleid) {
-		this.sampleid = sampleid;
+	public void setSampleId(long sampleId) {
+		this.sampleId = sampleId;
 	}
 	public int getSize() {
 		return size;

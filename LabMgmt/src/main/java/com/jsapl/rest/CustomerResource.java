@@ -38,7 +38,10 @@ import com.jsapl.util.CUID;
 public class CustomerResource {
 
 	@GET
-	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	
+	@Produces(MediaType.APPLICATION_OCTET_STREAM)
+	@Consumes(MediaType.APPLICATION_OCTET_STREAM)
+	
 	public List<Customer> getCustomerList(
 			@QueryParam("pageStart") String pageStart,
 			@QueryParam("pageSize" ) String pageSize){

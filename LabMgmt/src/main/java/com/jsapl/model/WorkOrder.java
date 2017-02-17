@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.glassfish.jersey.internal.inject.Custom;
+
 public class WorkOrder {
 	
 	public enum Status{New, InProgress, Stalled, Completed}
@@ -22,6 +24,8 @@ public class WorkOrder {
 	
 	private Set<Test> tests = new HashSet<>();
 	
+	public WorkOrder(){}
+	public WorkOrder(Customer customer){ this.customer = customer;}
 	
 	public long getId() {
 		return id;

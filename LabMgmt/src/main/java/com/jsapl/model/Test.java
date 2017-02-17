@@ -3,7 +3,7 @@ package com.jsapl.model;
 import java.sql.Date;
 
 public class Test {
-	public enum Status {PendingForWorkOrder, InQueue, StalledForMissingSample, StalledForMissingDetails, Completed }
+	public enum Status {PendingForWorkOrder, AssignedToWorkOrder, InQueue, StalledForMissingSample, StalledForMissingDetails, Completed }
 	
 	private TestId testId;
 	private String requiredSpecification;

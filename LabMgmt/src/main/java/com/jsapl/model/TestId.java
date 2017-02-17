@@ -7,7 +7,16 @@ public class TestId  implements Serializable{
 	private long workOrderId;
 	private long sampleId;
 	private long testTypeId;
+	
+	public TestId(){
+		
+	}
 
+	public TestId(long workOrderId, long sampleId, long testTypeId){
+		this.workOrderId=workOrderId;
+		this.sampleId=sampleId;
+		this.testTypeId=testTypeId;
+	}
 
 	public long getWorkOrderId() {
 		return workOrderId;

@@ -5,33 +5,21 @@
 <hibernate-mapping package="com.jsapl.model">
 
 	<class name="Sample" table="SAMPLE">
-		<id name="sampleid" type="long">
+
+		<id name="sampleId" type="long">
 			<column name="SAMPLEID" />
 			<generator class="assigned" />
 		</id>
 
-		<many-to-one name="customer" class="com.jsapl.model.Customer">
-			<column name="CUSTID" not-null="true" />
-		</many-to-one>
+		<property name="sampleName" type="java.lang.String">
+			<column name="SAMPLENAME" not-null="true"/>
+		</property>
 
 		<property name="form">
 			<column name="FORM" />
 			<type name="org.hibernate.type.EnumType">
 				<param name="type">12</param>
 				<param name="enumClass">com.jsapl.model.Sample$Form</param>
-				<param name="useNamed">true</param>
-			</type>
-		</property>
-
-		<property name="receivedDate" type="java.sql.Date">
-			<column name="RECEIVEDDATE" />
-		</property>
-
-		<property name="status">
-			<column name="STATUS" />
-			<type name="org.hibernate.type.EnumType">
-				<param name="type">12</param>
-				<param name="enumClass">com.jsapl.model.Sample$Status</param>
 				<param name="useNamed">true</param>
 			</type>
 		</property>
@@ -47,11 +35,29 @@
 		<property name="isToBeReturned" type="yes_no" access="field">
 			<column name="ISTOBERETURNED" />
 		</property>
-		
+
+		<property name="receivedDate" type="java.sql.Date">
+			<column name="RECEIVEDDATE" />
+		</property>
+
+		<property name="status">
+			<column name="STATUS" />
+			<type name="org.hibernate.type.EnumType">
+				<param name="type">12</param>
+				<param name="enumClass">com.jsapl.model.Sample$Status</param>
+				<param name="useNamed">true</param>
+			</type>
+		</property>
+
+		<many-to-one name="customer" class="com.jsapl.model.Customer">
+			<column name="CUSTID" not-null="true" />
+		</many-to-one>
+
 		<set name="tests" inverse="true" table="TEST" lazy="true" access="field">
 			<key column="SAMPLEID"></key>
 			<one-to-many class="com.jsapl.model.Test" />
 		</set>
+	
 	</class>
 
 </hibernate-mapping>
