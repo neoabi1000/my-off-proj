@@ -22,6 +22,7 @@ public class SampleDTO {
 
 	public SampleDTO(Sample sample){
 		this.sampleId = sample.getSampleId();
+		this.sampleName = sample.get
 		this.custId = sample.getCustomer().getCustId();
 		this.form = sample.getForm();
 		this.receivedDate = sample.getReceivedDate();
