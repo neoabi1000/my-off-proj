@@ -3,7 +3,6 @@ package com.jsapl.rest;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -28,6 +27,7 @@ import com.jsapl.model.Customer;
 import com.jsapl.model.CustomerType;
 import com.jsapl.model.Sample;
 import com.jsapl.model.WorkOrder;
+import com.jsapl.persistence.CustomerDao;
 import com.jsapl.persistence.HibernateUtil;
 import com.jsapl.rest.dto.CustomerDTO;
 import com.jsapl.rest.dto.SampleDTO;
@@ -36,36 +36,16 @@ import com.jsapl.util.CUID;
 
 @Path("customers")
 public class CustomerResource {
+	
+	CustomerDao customerDao = new CustomerDao();
 
 	@GET
-	
-	@Produces(MediaType.APPLICATION_OCTET_STREAM)
-	@Consumes(MediaType.APPLICATION_OCTET_STREAM)
-	
-	public List<Customer> getCustomerList(
-			@QueryParam("pageStart") String pageStart,
-			@QueryParam("pageSize" ) String pageSize){
+	@Produces(MediaType.APPLICATION_JSON) @Consumes(MediaType.APPLICATION_JSON)
+	public List<CustomerDTO> getCustomerList(
+				@QueryParam("pageStart") String pageStart, 
+				@QueryParam("pageSize" ) String pageSize){
 
-		Session session = HibernateUtil.getAppSessionFactory()
-				.openSession();
-
-
-		Query query = session.createQuery("from Customer");
-		if(pageStart !=null){
-			query = query.setFirstResult(Integer.valueOf(pageStart));
-		}
-		if(pageSize != null){
-			query = query.setMaxResults(Integer.valueOf(pageSize));
-		}
-
-
-
-		List<Customer> list = query.list();
-
-		session.close();
-
-		return list;
-
+		return CustomerDTO.covertList(customerDao.getCustomers(pageStart, pageSize));
 	}
 
 	@POST

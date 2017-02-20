@@ -12,6 +12,8 @@ import com.jsapl.model.Sample;
 import com.jsapl.model.TestCategory;
 import com.jsapl.model.TestType;
 import com.jsapl.model.WorkOrder;
+import com.jsapl.model.WorkOrderSample;
+import com.jsapl.model.WorkOrderSampleTest;
 import com.jsapl.persistence.HibernateUtil;
 import com.jsapl.util.CUID;
 
@@ -41,8 +43,30 @@ public class TestData {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(2017, 03, 01);
 		wrkOrder.setDateCommited(new Date(calendar.getTimeInMillis()));
-		wrkOrder.setDescription("URGENT: Customer wants this completed on time.");
+		wrkOrder.setDescription("I pray god that this works fine");
 		wrkOrder.setStatus(WorkOrder.Status.New);
+		
+		WorkOrderSample workOrderSample = new WorkOrderSample();
+		workOrderSample.setId(CUID.getInstance().nextId());
+		workOrderSample.setSampleId(sample.getSampleId());
+		workOrderSample.setWorkOrderId(wrkOrder.getId());
+		
+		WorkOrderSampleTest workOrderSampleTest1 = new WorkOrderSampleTest();
+		workOrderSampleTest1.setWorkOrderSampleId(workOrderSample.getId());
+		workOrderSampleTest1.setTestTypeId(1L);
+		workOrderSampleTest1.setRequiredSpecification("XYZ required Spec");
+		workOrderSampleTest1.setComments("Blah...blah...blah...");
+		
+		WorkOrderSampleTest workOrderSampleTest2 = new WorkOrderSampleTest();
+		workOrderSampleTest2.setWorkOrderSampleId(workOrderSample.getId());
+		workOrderSampleTest2.setTestTypeId(2L);
+		workOrderSampleTest2.setRequiredSpecification("XYZ required Spec");
+		workOrderSampleTest2.setComments("Blah...blah...blah...");
+		
+		workOrderSample.getWorkOrderSampleTests().add(workOrderSampleTest1);
+		workOrderSample.getWorkOrderSampleTests().add(workOrderSampleTest2);
+		
+		wrkOrder.getWorkOrderSamples().add(workOrderSample);
 		
 		session.save(wrkOrder);
 		
@@ -61,7 +85,7 @@ public class TestData {
 		Customer customer = (Customer)session.load(Customer.class, new Long(7727621757672095745L));
 		
 		Sample sample = new Sample();
-		sample.setSampleid(CUID.getInstance().nextId());
+		sample.setSampleId(CUID.getInstance().nextId());
 		sample.setCustomer(customer);
 		sample.setToBeReturned(true);
 		sample.setForm(Sample.Form.Powder);
@@ -104,7 +128,7 @@ public class TestData {
 
 
 		Sample sample1 = new Sample();
-		sample1.setSampleid(CUID.getInstance().nextId());
+		sample1.setSampleId(CUID.getInstance().nextId());
 		sample1.setCustomer(cust1);
 		sample1.setForm(Sample.Form.Wires);
 		sample1.setReceivedDate(new Date(Calendar.getInstance().getTimeInMillis()));
@@ -113,7 +137,7 @@ public class TestData {
 		sample1.setStatus(Sample.Status.Received);
 
 		Sample sample2 = new Sample();
-		sample2.setSampleid(CUID.getInstance().nextId());
+		sample2.setSampleId(CUID.getInstance().nextId());
 		sample2.setCustomer(cust1);
 		sample2.setForm(Sample.Form.Powder);
 		sample2.setReceivedDate(new Date(Calendar.getInstance().getTimeInMillis()));
@@ -122,7 +146,7 @@ public class TestData {
 		sample2.setStatus(Sample.Status.Received);
 
 		Sample sample3 = new Sample();
-		sample3.setSampleid(CUID.getInstance().nextId());
+		sample3.setSampleId(CUID.getInstance().nextId());
 		sample3.setCustomer(cust1);
 		sample3.setForm(Sample.Form.Pipe);
 		sample3.setReceivedDate(new Date(Calendar.getInstance().getTimeInMillis()));

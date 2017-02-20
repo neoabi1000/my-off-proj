@@ -25,6 +25,8 @@
 		<mapping resource="TestCategory.hbm.xml" />
 		<mapping resource="TestType.hbm.xml" />
 		<mapping resource="WorkOrder.hbm.xml" />
+		<mapping resource="WorkOrderSample.hbm.xml" />
+		<mapping resource="WorkOrderSampleTest.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
 

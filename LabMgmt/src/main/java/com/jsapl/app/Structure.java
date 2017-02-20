@@ -112,7 +112,7 @@ class WorkOrder{
 	public boolean addTest(Sample sample, WorkOrderTestItem workOrderTestItem) throws InvalidTestSampleException, DuplicateTestException{
 
 		if(!sample.getCustomer().equals(c))
-			throw new InvalidTestSampleException("This sample doesn't below to customer of this work order");
+			throw new InvalidTestSampleException("This sample doesn't belogns to customer of this work order");
 		
 		if(workOrderTestItemMap.containsKey(sample)){
 			if(workOrderTestItemMap.get(sample).contains(workOrderTestItem)){
@@ -136,6 +136,7 @@ class WorkOrderTestItem
 	TestType testType;
 	String requiredSpec;
 	String comments;
+	int flowNum;
 
 	public WorkOrderTestItem(){}
 	public WorkOrderTestItem(TestType testType, String requiredSpc){

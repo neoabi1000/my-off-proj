@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 19, 2017 11:14:18 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.jsapl.model.WorkOrderSampleTest" table="WORKORDERSAMPLETEST">
+		<composite-id>
+			<key-property name="workOrderSampleId" column="WORKORDERSAMPLEID"></key-property>
+			<key-property name="testTypeId" column="TESTTYPEID"></key-property>
+		</composite-id>
+
+		<property name="requiredSpecification" type="java.lang.String">
+			<column name="REQUIREDSPECIFICATION" />
+		</property>
+		<property name="comments" type="java.lang.String">
+			<column name="COMMENTS" />
+		</property>
+	</class>
+</hibernate-mapping>

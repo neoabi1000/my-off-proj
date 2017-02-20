@@ -17,8 +17,8 @@ public class Sample {
 	private int size;
 	private String stamping;
 	private boolean isToBeReturned;
-	
 	private Customer customer;
+	private String sampleDescription;
 	
 	private Set<Test> tests = new HashSet<>();
 	
@@ -104,5 +104,12 @@ public class Sample {
 	}
 	public void setForm(Form form) {
 		this.form = form;
+	}
+	
+	public String getSampleDescription() {
+		return sampleDescription;
+	}
+	public void setSampleDescription(String sampleDescription) {
+		this.sampleDescription = sampleDescription;
 	}
 }

@@ -38,9 +38,10 @@
 			<column name="ADVANCEPAID" />
 		</property>
 
-		<set name="tests" inverse="true" table="TEST" lazy="false">
+		<set name="workOrderSamples" inverse="true" table="WORKORDERSAMPLE"
+			lazy="false" cascade="all">
 			<key column="WORKORDERID"></key>
-			<one-to-many class="com.jsapl.model.Test" />
+			<one-to-many class="com.jsapl.model.WorkOrderSample" />
 		</set>
 
 	</class>

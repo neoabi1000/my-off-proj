@@ -3,8 +3,6 @@ package com.jsapl.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 public class Customer {
 	
@@ -15,15 +13,11 @@ public class Customer {
 	
 	private CustomerType customerType;
 	
-	@JsonIgnore
 	private Set<Sample> samples = new HashSet<>();
 	
-	@JsonIgnore
 	private Set<WorkOrder> workOrders = new HashSet<>();
 
-	@JsonIgnore
 	private Set<CustomerContact> contacts = new HashSet<>();
-	
 	
 	
 	

@@ -1,17 +1,15 @@
 package com.jsapl.model;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-
-import org.glassfish.jersey.internal.inject.Custom;
 
 public class WorkOrder {
 	
 	public enum Status{New, InProgress, Stalled, Completed}
 	
 	private long id;
-	private Customer customer;
 	private String description;
 	private String clientInfo;
 	private Date created;
@@ -21,11 +19,50 @@ public class WorkOrder {
 	private double totalCost;
 	private double advancePaid;
 	
+	private Customer customer;
 	
-	private Set<Test> tests = new HashSet<>();
+	private Set<WorkOrderSample> workOrderSamples = new HashSet<>();
+	
 	
 	public WorkOrder(){}
 	public WorkOrder(Customer customer){ this.customer = customer;}
+
+
+	
+
+	
+
+//	public boolean addTest(Sample sample, TestType testType, String requiredSpec, String comments) throws CustomerSampleMismatchException, DuplicateWorkOrderTestItemException{
+//
+//		if(!sample.getCustomer().equals(customer))
+//			throw new CustomerSampleMismatchException("This sample doesn't belogns to customer of this work order");
+//		
+//		WorkOrderTestItem workOrderTestItem = new WorkOrderTestItem(this, sample, testType, requiredSpec, comments);
+//
+//		if(workOrderTestItemMap.containsKey(sample.getSampleId())){
+//			if(workOrderTestItemMap.get(sample.getSampleId()).contains(workOrderTestItem)){
+//				throw new DuplicateWorkOrderTestItemException("The work order already contains the said test, if required please invoke update");
+//			}else{
+//				workOrderTestItemMap.get(sample.getSampleId()).add(workOrderTestItem);
+//			}
+//		}else{
+//			HashSet<WorkOrderTestItem> workOrderTestItems = new HashSet<>();
+//			workOrderTestItems.add(workOrderTestItem);
+//			workOrderTestItemMap.put(sample.getSampleId(), workOrderTestItems);
+//		}
+//		return true;
+//	}
+	
+	
+	
+	
+	
+	public Set<WorkOrderSample> getWorkOrderSamples() {
+		return workOrderSamples;
+	}
+	public void setWorkOrderSamples(Set<WorkOrderSample> workOrderSamples) {
+		this.workOrderSamples = workOrderSamples;
+	}
 	
 	public long getId() {
 		return id;
@@ -87,10 +124,5 @@ public class WorkOrder {
 	public void setAdvancePaid(double advancePaid) {
 		this.advancePaid = advancePaid;
 	}
-	public Set<Test> getTests() {
-		return tests;
-	}
-	public void setTests(Set<Test> tests) {
-		this.tests = tests;
-	}
+
 }

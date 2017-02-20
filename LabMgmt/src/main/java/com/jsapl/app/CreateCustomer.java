@@ -42,7 +42,7 @@ public class CreateCustomer {
 		
 		
 		Sample sample1 = new Sample();
-		sample1.setSampleid(CUID.getInstance().nextId());
+		sample1.setSampleId(CUID.getInstance().nextId());
 		sample1.setCustomer(cust1);
 		sample1.setForm(Sample.Form.Wires);
 		sample1.setReceivedDate(new Date(Calendar.getInstance().getTimeInMillis()));
@@ -51,7 +51,7 @@ public class CreateCustomer {
 		sample1.setStatus(Sample.Status.Received);
 		
 		Sample sample2 = new Sample();
-		sample2.setSampleid(CUID.getInstance().nextId());
+		sample2.setSampleId(CUID.getInstance().nextId());
 		sample2.setCustomer(cust1);
 		sample2.setForm(Sample.Form.Powder);
 		sample2.setReceivedDate(new Date(Calendar.getInstance().getTimeInMillis()));
@@ -60,7 +60,7 @@ public class CreateCustomer {
 		sample2.setStatus(Sample.Status.Received);
 		
 		Sample sample3 = new Sample();
-		sample3.setSampleid(CUID.getInstance().nextId());
+		sample3.setSampleId(CUID.getInstance().nextId());
 		sample3.setCustomer(cust1);
 		sample3.setForm(Sample.Form.Pipe);
 		sample3.setReceivedDate(new Date(Calendar.getInstance().getTimeInMillis()));

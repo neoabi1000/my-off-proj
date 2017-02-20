@@ -1,7 +1,10 @@
 package com.jsapl.rest.dto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
+import com.jsapl.model.Customer;
 import com.jsapl.model.CustomerContact;
 
 public class CustomerDTO 
@@ -10,7 +13,18 @@ public class CustomerDTO
 	private String name;
 	private String phone;
 	private String pan;
-	private int customerType;
+	private String customerType;
+	private Set<CustomerContact> contacts;
+	
+	public CustomerDTO(){}
+	public CustomerDTO(Customer customer){
+		this.custId = customer.getCustId();
+		this.name = customer.getName();
+		this.phone = customer.getPhone();
+		this.pan = customer.getPan();
+		this.customerType = customer.getCustomerType().getName();
+		this.contacts = customer.getContacts();
+	}
 	
 	public long getCustId() {
 		return custId;
@@ -36,10 +50,10 @@ public class CustomerDTO
 	public void setPan(String pan) {
 		this.pan = pan;
 	}
-	public int getCustomerType() {
+	public String getCustomerType() {
 		return customerType;
 	}
-	public void setCustomerType(int customerType) {
+	public void setCustomerType(String customerType) {
 		this.customerType = customerType;
 	}
 	public Set<CustomerContact> getContacts() {
@@ -48,6 +62,15 @@ public class CustomerDTO
 	public void setContacts(Set<CustomerContact> contacts) {
 		this.contacts = contacts;
 	}
-	private Set<CustomerContact> contacts;
+	
+	public static List<CustomerDTO> covertList(List<Customer> customers){
+		
+		List<CustomerDTO> retListOfCustomers = new ArrayList<>();
+		
+		for(Customer customer: customers){
+			retListOfCustomers.add(new CustomerDTO(customer));
+		}
+		return retListOfCustomers;
+	}
 	
 }

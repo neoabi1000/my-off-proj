@@ -8,6 +8,7 @@ public class SampleDTO {
 
 	private long sampleId;
 	private String sampleName;
+	private String sampleDescription;
 	private long custId;
 	private Sample.Form form;
 	private Date receivedDate;
@@ -22,7 +23,7 @@ public class SampleDTO {
 
 	public SampleDTO(Sample sample){
 		this.sampleId = sample.getSampleId();
-		this.sampleName = sample.get
+		this.sampleName = sample.getSampleName();
 		this.custId = sample.getCustomer().getCustId();
 		this.form = sample.getForm();
 		this.receivedDate = sample.getReceivedDate();
@@ -30,15 +31,34 @@ public class SampleDTO {
 		this.size = sample.getSize();
 		this.stamping=sample.getStamping();
 		this.isToBeReturned = sample.isToBeReturned();
+		this.sampleDescription=sample.getSampleDescription();
 	}
 	
 	
+
 	public long getCustId() {
 		return custId;
 	}
 	public void setCustId(long custId) {
 		this.custId = custId;
 	}
+	
+	public String getSampleName() {
+		return sampleName;
+	}
+	public void setSampleName(String sampleName) {
+		this.sampleName = sampleName;
+	}
+
+	
+	public String getSampleDescription() {
+		return sampleDescription;
+	}
+
+	public void setSampleDescription(String sampleDescription) {
+		this.sampleDescription = sampleDescription;
+	}
+
 	public boolean isToBeReturned() {
 		return isToBeReturned;
 	}
