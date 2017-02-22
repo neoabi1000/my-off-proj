@@ -3,9 +3,9 @@
 <%@page import="org.hibernate.Session"%>
 <html>
 <body>
-	<h2>Hello, Jyothi Spectro</h2>
-	<h2>Hello, Santhosh</h2>
+	<h2>Jyothi Spectro</h2>
 
+<a href="customer.jsp">Manage Customers</a>
 	<%
 		Session session1 = HibernateUtil.getAppSessionFactory()
 				.openSession();

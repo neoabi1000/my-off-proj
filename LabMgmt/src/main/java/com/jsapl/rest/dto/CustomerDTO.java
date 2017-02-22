@@ -13,7 +13,8 @@ public class CustomerDTO
 	private String name;
 	private String phone;
 	private String pan;
-	private String customerType;
+	private int customerType;
+	
 	private Set<CustomerContact> contacts;
 	
 	public CustomerDTO(){}
@@ -22,7 +23,7 @@ public class CustomerDTO
 		this.name = customer.getName();
 		this.phone = customer.getPhone();
 		this.pan = customer.getPan();
-		this.customerType = customer.getCustomerType().getName();
+		this.customerType = customer.getCustomerType().getType();
 		this.contacts = customer.getContacts();
 	}
 	
@@ -50,10 +51,10 @@ public class CustomerDTO
 	public void setPan(String pan) {
 		this.pan = pan;
 	}
-	public String getCustomerType() {
+	public int getCustomerType() {
 		return customerType;
 	}
-	public void setCustomerType(String customerType) {
+	public void setCustomerType(int customerType) {
 		this.customerType = customerType;
 	}
 	public Set<CustomerContact> getContacts() {
