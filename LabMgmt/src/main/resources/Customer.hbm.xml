@@ -5,34 +5,47 @@
 <hibernate-mapping package="com.jsapl.model">
 
 	<class name="Customer" table="CUSTOMER">
-	
+
 		<id name="custId" type="long">
 			<column name="CUSTID" />
 			<generator class="assigned" />
 		</id>
-		
+		<many-to-one name="customerType" class="CustomerType"
+			lazy="false">
+			<column name="CUSTOMERTYPE" not-null="true" />
+		</many-to-one>
 		<property name="name" type="java.lang.String">
 			<column name="NAME" />
 		</property>
-		
 		<property name="phone" type="java.lang.String">
 			<column name="PHONE" />
 		</property>
-		
 		<property name="pan" type="java.lang.String">
 			<column name="PAN" />
 		</property>
+		<property name="createdOn" type="java.sql.Date">
+			<column name="CREATEDON" sql-type="timestamp" />
+		</property>
+		<property name="lastUpdatedOn" type="java.sql.Date">
+			<column name="LASTUPDATEDON" sql-type="timestamp" />
+		</property>
+		<property name="createdBy" type="java.lang.String">
+			<column name="CREATEDBY" />
+		</property>
+		<property name="lastUpdatedBy" type="java.lang.String">
+			<column name="LASTUPDATEDBY" />
+		</property>
 
-		<many-to-one name="customerType" class="CustomerType" lazy="false">
-			<column name="CUSTOMERTYPE" not-null="true" />
-		</many-to-one>
 
-		<set name="samples" inverse="false" fetch="select" table="SAMPLE" lazy="true">
+
+		<set name="samples" inverse="false" fetch="select" table="SAMPLE"
+			lazy="true">
 			<key column="CUSTID"></key>
 			<one-to-many class="Sample" />
 		</set>
 
-		<set name="contacts" table="CUSTOMER_CONTACT" cascade="save-update" lazy="false">
+		<set name="contacts" table="CUSTOMER_CONTACT" cascade="save-update"
+			lazy="false">
 			<key column="custId"></key>
 			<composite-element class="com.jsapl.model.CustomerContact">
 				<property name="name"></property>
@@ -41,5 +54,5 @@
 			</composite-element>
 		</set>
 	</class>
-	
+
 </hibernate-mapping>

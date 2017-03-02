@@ -1,7 +1,9 @@
 package com.jsapl.rest;
 
 import java.net.URI;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -60,12 +62,16 @@ public class CustomerResource {
 		customer.setName(customerDto.getName());
 		customer.setPan(customerDto.getPan());
 		customer.setPhone(customerDto.getPhone());
+		customer.setCreatedBy("santosh");
+		customer.setCreatedOn(new Date(Calendar.getInstance().getTimeInMillis()));
+		customer.setLastUpdatedBy("santosh");
+		customer.setLastUpdatedOn(new Date(Calendar.getInstance().getTimeInMillis()));
 
 
 		Session session = HibernateUtil.getAppSessionFactory()
 				.openSession();
 
-		CustomerType customerType = (CustomerType)session.load(CustomerType.class, customerDto.getCustomerType());
+		CustomerType customerType = (CustomerType)session.load(CustomerType.class, customerDto.getCustomerTypeId());
 		if(customerType==null){
 			return Response.status(Status.BAD_REQUEST).build();
 		}

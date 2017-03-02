@@ -14,6 +14,33 @@ import com.jsapl.util.CUID;
 
 public class CreateCustomer {
 	public static void main(String[] args) {
+		
+		Session session = HibernateUtil.getAppSessionFactory().openSession();
+
+		//Sample Transaction		
+		session.beginTransaction();
+
+
+		CustomerType customerType = (CustomerType)session.load(CustomerType.class, new Integer(1));
+		
+		Customer cust1 = new Customer();
+		cust1.setCustId(CUID.getInstance().nextId());
+		cust1.setName("Customer WHY");
+		cust1.setPan("MHUPM78879H");
+		cust1.setPhone("+91 8765438987");
+		cust1.setCustomerType(customerType);
+		cust1.getContacts().add(new CustomerContact("Anil", "Anil@why.com", "+91 9876789876"));
+		cust1.getContacts().add(new CustomerContact("Srinivas", "Srinivas@why.com", "+91 8978675645"));
+		cust1.setCreatedBy("anjali-reception");
+		cust1.setCreatedOn(new Date(Calendar.getInstance().getTimeInMillis()));
+		
+		session.save(cust1);
+		session.getTransaction().commit();
+		session.close();
+		HibernateUtil.getAppSessionFactory().close();
+	}
+	
+	public static void createCustomers(){
 		Session session = HibernateUtil.getAppSessionFactory().openSession();
 
 		//Sample Transaction		
