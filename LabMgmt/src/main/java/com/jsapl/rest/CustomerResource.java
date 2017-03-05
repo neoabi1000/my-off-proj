@@ -42,7 +42,7 @@ public class CustomerResource {
 	CustomerDao customerDao = new CustomerDao();
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON) @Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<CustomerDTO> getCustomerList(
 				@QueryParam("pageStart") String pageStart, 
 				@QueryParam("pageSize" ) String pageSize){

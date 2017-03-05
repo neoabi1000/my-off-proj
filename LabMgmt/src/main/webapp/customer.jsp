@@ -1,34 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-animate.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-sanitize.js"></script>
-<script
-	src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
-
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<script src="customers.js"></script>
-
-<title>Customer Management</title>
-</head>
-
-<body ng-app="CustMgmt">
-	<div class="n">
-		<h2>Jyothi Spectro</h2>
+<div>
+	<div>
 		<h2>Manage Customers</h2>
 	</div>
 	<div>{{msg}}</div>
-	<div ng-controller="CustomerController">
+	<div>
 
 		<script type="text/ng-template" id="AddCustomerModal.html">
         <div class="modal-header">
@@ -51,8 +26,11 @@
 			</form>
         </div>
     </script>
-		<button type="button" class="btn btn-default" ng-click="open('sm')">Add
-			Customer</button>
+		<button type="button" class="btn btn-default" ng-click="open('sm')">Add</button>
+		<button type="button" class="btn btn-default" ng-click="">Edit</button>
+		<button type="button" class="btn btn-default" ng-click="">Delete</button>
+		<button type="button" class="btn btn-default" ng-click="">Take Samples</button>
+		<button type="button" class="btn btn-default" ng-click="">Create WorkOrders</button>
 
 		<hr />
 		{{error}} {{' Total # of Customers = '+ customers.length}}
@@ -73,7 +51,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="customer in customers | orderBy: 'lastUpdatedOn':true">
+				<tr
+					ng-repeat="customer in customers | orderBy: 'lastUpdatedOn':true">
 					<td><input type="checkbox" ng-model="selected">
 					<td>{{ customer.custId }}</td>
 					<td>{{ customer.name }}</td>
@@ -89,5 +68,4 @@
 		</table>
 	</div>
 
-</body>
-</html>
+</div>

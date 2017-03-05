@@ -1,6 +1,6 @@
-
 (function(){
-	var custMgmtModule = angular.module('CustMgmt', ['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+	
+	var app = angular.module("app");
 
 	var CustomerController = function($rootScope, $scope, $http, $uibModal, $log, $document) {
 
@@ -72,7 +72,7 @@
 		};
 	};
 
-	custMgmtModule.controller('CustomerController', ['$rootScope', '$scope', '$http', '$uibModal', '$log', '$document', CustomerController]);
-	custMgmtModule.controller('ModalInstanceController', ['$uibModalInstance', 'items', '$scope', '$rootScope', '$http', ModalInstanceController]);
+	app.controller('CustomerController', ['$rootScope', '$scope', '$http', '$uibModal', '$log', '$document', CustomerController]);
+	app.controller('ModalInstanceController', ['$uibModalInstance', 'items', '$scope', '$rootScope', '$http', ModalInstanceController]);
 
 })();

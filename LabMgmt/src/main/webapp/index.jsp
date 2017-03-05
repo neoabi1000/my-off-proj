@@ -1,24 +1,39 @@
-<%@page import="com.jsapl.model.Customer"%>
-<%@page import="com.jsapl.persistence.HibernateUtil"%>
-<%@page import="org.hibernate.Session"%>
+<!DOCTYPE html>
 <html>
-<body>
-	<h2>Jyothi Spectro</h2>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-animate.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-sanitize.js"></script>
+<script
+	src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
 
-<a href="customer.jsp">Manage Customers</a>
-	<%
-		Session session1 = HibernateUtil.getAppSessionFactory()
-				.openSession();
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="app.js"></script>
+<script src="customers.js"></script>
+<script src="samples.js"></script>
+</head>
 
-		//Sample Transaction		
-		session1.beginTransaction();
-		
-		Customer cust1 = (Customer)session1.load(Customer.class, new Long(7727621757672095745L));
-		
-		out.println("Customer name: " + cust1.getName());
+<body ng-app="app">
 
-		session1.getTransaction().commit();
-		session1.close();
-	%>
+	<h1>Jyothi Spectro</h1>
+
+	<div class="navbar">
+		<h2>Navigation</h2>
+		<a href="#!/dashboard">Dashboard</a> <a href="#!/customers">Customers</a>
+		<a href="#!/samples">Samples</a> <a href="#!/workorders">Work
+			Orders</a> <a href="#!/delivery">Delivery</a>
+	</div>
+
+	<div ng-view></div>
+
 </body>
+
 </html>
