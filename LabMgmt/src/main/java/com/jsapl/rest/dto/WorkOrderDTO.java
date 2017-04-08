@@ -1,8 +1,6 @@
 package com.jsapl.rest.dto;
 
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import com.jsapl.model.WorkOrder;
 
@@ -12,12 +10,14 @@ public class WorkOrderDTO {
 	private long custId;
 	private String description;
 	private String clientInfo;
-	private Date created;
-	private Date updated;
 	private String status;
 	private Date dateCommited;
 	private double totalCost;
 	private double advancePaid;
+	private Date createdOn;
+	private String createdBy;
+	private Date lastUpdatedOn;
+	private String lastUpdatedBy;
 	
 	public WorkOrderDTO(){
 		
@@ -28,8 +28,6 @@ public class WorkOrderDTO {
 		this.custId = workOrder.getCustomer().getCustId();
 		this.description=workOrder.getDescription();
 		this.clientInfo=workOrder.getClientInfo();
-		this.created=workOrder.getCreated();
-		this.updated=workOrder.getUpdated();
 		this.status= workOrder.getStatus().name();
 		this.dateCommited=workOrder.getDateCommited();
 		this.totalCost = workOrder.getTotalCost();
@@ -53,18 +51,6 @@ public class WorkOrderDTO {
 	}
 	public void setClientInfo(String clientInfo) {
 		this.clientInfo = clientInfo;
-	}
-	public Date getCreated() {
-		return created;
-	}
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-	public Date getUpdated() {
-		return updated;
-	}
-	public void setUpdated(Date updated) {
-		this.updated = updated;
 	}
 	public String getStatus() {
 		return status;
@@ -95,6 +81,30 @@ public class WorkOrderDTO {
 	}
 	public void setCustId(long custId) {
 		this.custId = custId;
+	}
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+	public Date getLastUpdatedOn() {
+		return lastUpdatedOn;
+	}
+	public void setLastUpdatedOn(Date lastUpdatedOn) {
+		this.lastUpdatedOn = lastUpdatedOn;
+	}
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	public String getLastUpdatedBy() {
+		return lastUpdatedBy;
+	}
+	public void setLastUpdatedBy(String lastUpdatedBy) {
+		this.lastUpdatedBy = lastUpdatedBy;
 	}
 
 }

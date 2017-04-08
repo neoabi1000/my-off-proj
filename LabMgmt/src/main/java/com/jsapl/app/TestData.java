@@ -38,8 +38,8 @@ public class TestData {
 		wrkOrder.setCustomer(customer);
 		wrkOrder.setClientInfo("Self");
 		wrkOrder.setAdvancePaid(0);
-		wrkOrder.setCreated(new Date(Calendar.getInstance().getTimeInMillis()));
-		wrkOrder.setUpdated(new Date(Calendar.getInstance().getTimeInMillis()));
+		//wrkOrder.setCreated(new Date(Calendar.getInstance().getTimeInMillis()));
+		//wrkOrder.setUpdated(new Date(Calendar.getInstance().getTimeInMillis()));
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(2017, 03, 01);
 		wrkOrder.setDateCommited(new Date(calendar.getTimeInMillis()));
@@ -48,8 +48,9 @@ public class TestData {
 		
 		WorkOrderSample workOrderSample = new WorkOrderSample();
 		workOrderSample.setId(CUID.getInstance().nextId());
-		workOrderSample.setSampleId(sample.getSampleId());
 		workOrderSample.setWorkOrderId(wrkOrder.getId());
+		workOrderSample.setSampleId(sample.getSampleId());
+		
 		
 		WorkOrderSampleTest workOrderSampleTest1 = new WorkOrderSampleTest();
 		workOrderSampleTest1.setWorkOrderSampleId(workOrderSample.getId());

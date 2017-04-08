@@ -1,7 +1,6 @@
 package com.jsapl.model;
 
 import java.sql.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,12 +11,15 @@ public class WorkOrder {
 	private long id;
 	private String description;
 	private String clientInfo;
-	private Date created;
-	private Date updated;
 	private Status status;
 	private Date dateCommited;
 	private double totalCost;
 	private double advancePaid;
+	private Date createdOn;
+	private String createdBy;
+	private Date lastUpdatedOn;
+	private String lastUpdatedBy;
+	
 	
 	private Customer customer;
 	
@@ -88,18 +90,6 @@ public class WorkOrder {
 	public void setClientInfo(String clientInfo) {
 		this.clientInfo = clientInfo;
 	}
-	public Date getCreated() {
-		return created;
-	}
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-	public Date getUpdated() {
-		return updated;
-	}
-	public void setUpdated(Date updated) {
-		this.updated = updated;
-	}
 	public Status getStatus() {
 		return status;
 	}
@@ -123,6 +113,30 @@ public class WorkOrder {
 	}
 	public void setAdvancePaid(double advancePaid) {
 		this.advancePaid = advancePaid;
+	}
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+	public Date getLastUpdatedOn() {
+		return lastUpdatedOn;
+	}
+	public void setLastUpdatedOn(Date lastUpdatedOn) {
+		this.lastUpdatedOn = lastUpdatedOn;
+	}
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	public String getLastUpdatedBy() {
+		return lastUpdatedBy;
+	}
+	public void setLastUpdatedBy(String lastUpdatedBy) {
+		this.lastUpdatedBy = lastUpdatedBy;
 	}
 
 }

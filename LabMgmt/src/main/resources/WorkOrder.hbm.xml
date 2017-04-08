@@ -18,12 +18,6 @@
 		<property name="clientInfo" type="java.lang.String">
 			<column name="CLIENTINFO" />
 		</property>
-		<property name="created" type="java.sql.Date">
-			<column name="CREATED" />
-		</property>
-		<property name="updated" type="java.sql.Date">
-			<column name="UPDATED" />
-		</property>
 		<property name="status">
 			<column name="STATUS" />
 			<type name="org.hibernate.type.EnumType">
@@ -36,6 +30,18 @@
 		</property>
 		<property name="advancePaid" type="double">
 			<column name="ADVANCEPAID" />
+		</property>
+		<property name="createdOn" type="java.sql.Date">
+			<column name="CREATEDON" />
+		</property>
+		<property name="createdBy" type="java.lang.String">
+			<column name="CREATEDBY" />
+		</property>
+		<property name="lastUpdatedOn" type="java.sql.Date">
+			<column name="LASTUPDATEDON" />
+		</property>
+		<property name="lastUpdatedBy" type="java.lang.String">
+			<column name="LASTUPDATEDBY" />
 		</property>
 
 		<set name="workOrderSamples" inverse="true" table="WORKORDERSAMPLE"
